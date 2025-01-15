@@ -6,14 +6,24 @@ function NavBar() {
   const homeNav = () => {
     navigate('/home');
   };
+  const contentNav = () => {
+    navigate('/content');
+  };
+  const editNav = () => {
+    navigate('/edit');
+  };
+  const viewNav = () => {
+    navigate('/view');
+  };
   return (
     <>
       <NavContainer>
         <NavTitle onClick={homeNav}>SW's Blog</NavTitle>
         <NavBtnContainer>
           <NavBtn onClick={homeNav}>home</NavBtn>
-          <NavBtn>blog</NavBtn>
-          <NavBtn>about</NavBtn>
+          <NavBtn onClick={contentNav}>content</NavBtn>
+          <NavBtn onClick={editNav}>edit</NavBtn>
+          <NavBtn onClick={viewNav}>view</NavBtn>
           <NavBtn>
             <Moon />
           </NavBtn>

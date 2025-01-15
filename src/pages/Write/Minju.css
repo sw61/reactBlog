@@ -1,0 +1,43 @@
+.headBar {
+  display: flex;
+  justify-content: space-between;
+}
+.header {
+  display: flex;
+}
+.header2 {
+  display: flex;
+}
+.subBar {
+  display: flex;
+  justify-content: space-between;
+}
+.header3 {
+  display: flex;
+  gap: 10px;
+}
+.webRanking {
+  display: flex;
+  justify-content: space-between;
+}
+.totalRanking {
+  display: flex;
+  width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.num1 {
+  display: flex;
+  width: 320px;
+  text-overflow: ellipsis;
+}
+.image {
+  width: 100px;
+  height: 80px;
+}
+.rank {
+  padding-left: 10px;
+  padding-right: 10px;
+}

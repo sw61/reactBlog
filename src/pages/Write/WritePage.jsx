@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import NavBar from '../NavBar';
 import styled from 'styled-components';
+import React from 'react';
 function WritePage() {
   const [value, setValue] = useState('');
   const onChange = (event) => {
     setValue(event.target.value);
   };
   const onSave = () => {};
+
   return (
     <>
       <NavBar />
