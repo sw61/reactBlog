@@ -3,27 +3,18 @@ import { Moon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 function NavBar() {
   const navigate = useNavigate();
-  const homeNav = () => {
-    navigate('/home');
+  const pathNav = (path) => {
+    navigate(path);
   };
-  const contentNav = () => {
-    navigate('/content');
-  };
-  const editNav = () => {
-    navigate('/edit');
-  };
-  const viewNav = () => {
-    navigate('/view');
-  };
+
   return (
     <>
       <NavContainer>
-        <NavTitle onClick={homeNav}>SW's Blog</NavTitle>
+        <NavTitle onClick={() => pathNav('/home')}>SW's Blog</NavTitle>
         <NavBtnContainer>
-          <NavBtn onClick={homeNav}>home</NavBtn>
-          <NavBtn onClick={contentNav}>content</NavBtn>
-          <NavBtn onClick={editNav}>edit</NavBtn>
-          <NavBtn onClick={viewNav}>view</NavBtn>
+          <NavBtn onClick={() => pathNav('/home')}>home</NavBtn>
+          <NavBtn onClick={() => pathNav('/edit')}>edit</NavBtn>
+          <NavBtn onClick={() => pathNav('/view')}>view</NavBtn>
           <NavBtn>
             <Moon />
           </NavBtn>
@@ -43,7 +34,7 @@ const NavContainer = styled.div`
   height: 40px;
   padding: 15px;
   justify-content: space-around;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #e5e7eb;
 `;
 const NavBtn = styled.button`
   border: none;

@@ -6,6 +6,8 @@ function BlogList({ blog }) {
       <ListContainer>
         <BlogImg src={imgUrl}></BlogImg>
         <div>{title}</div>
+        <div>코멘트</div>
+        <div>날짜</div>
       </ListContainer>
     </>
   );
