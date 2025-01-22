@@ -6,8 +6,8 @@ import { getAllPosts } from '../remote/post';
 function BlogList() {
   const [documents, setDocuments] = useState([]);
   const navigate = useNavigate();
-  const pathNav = (path) => {
-    navigate(path);
+  const postPathNav = (id) => {
+    navigate(`/post/${id}`);
   };
   // 전체 포스트 목록 가져오기
   useEffect(() => {
@@ -22,12 +22,12 @@ function BlogList() {
     <>
       {documents.length > 0 ? (
         documents.map((doc) => (
-          <PostContainer key={doc.id}>
+          <PostContainer key={doc.id} onClick={() => postPathNav(doc.id)}>
             <BlogImg src={doc.imgUrl}></BlogImg>
             <TextContainer>
               <TitleText>{doc.title}</TitleText>
               <ComentText>{doc.comment}</ComentText>
-              <UploadText>25.01.21</UploadText>
+              <UploadText>{doc.date}</UploadText>
             </TextContainer>
           </PostContainer>
         ))

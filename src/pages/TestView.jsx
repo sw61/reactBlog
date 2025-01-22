@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 // 컴포넌트
+import { useParams } from 'react-router-dom';
 import NavBar from './NavBar';
 import SideBar from './SideBar';
 import Footer from './Footer';
@@ -13,21 +14,20 @@ import remarkParse from 'remark-parse';
 // Markdown style
 import { MdxComponents } from '../components/mdx';
 import rehypeSlug from 'rehype-slug';
-import { getAllPosts } from '../remote/post';
+import { getPostById } from '../remote/getPostById';
 
-function Viewer() {
+function PostDetail() {
+  const { id } = useParams(); // URL에서 id 값 가져오기
   const [documents, setDocuments] = useState([]);
   const [headings, setHeadings] = useState([]);
 
-  // 전체 포스트 목록 가져오기
   useEffect(() => {
-    const handleGetAllPosts = async () => {
-      const result = await getAllPosts();
-      setDocuments(result);
-    };
-
-    handleGetAllPosts();
-  }, []);
+    async function fetchPost() {
+      const fetchedPost = await getPostById(id); // Firebase에서 데이터 가져오기
+      setDocuments([fetchedPost]);
+    }
+    fetchPost();
+  }, [id]);
 
   // 제목 추출
   useEffect(() => {
@@ -88,8 +88,7 @@ function Viewer() {
     </>
   );
 }
-
-export default Viewer;
+export default PostDetail;
 const ViewerContainer = styled.div`
   display: flex;
   flex-direction: column;
