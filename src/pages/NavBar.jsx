@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Moon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
 function NavBar() {
   const navigate = useNavigate();
   const pathNav = (path) => {
@@ -10,11 +11,9 @@ function NavBar() {
   return (
     <>
       <NavContainer>
-        <NavTitle onClick={() => pathNav('/home')}>SW's Blog</NavTitle>
+        <NavTitle onClick={() => pathNav('/')}>SW's Blog</NavTitle>
         <NavBtnContainer>
-          <NavBtn onClick={() => pathNav('/home')}>home</NavBtn>
-          <NavBtn onClick={() => pathNav('/edit')}>edit</NavBtn>
-          <NavBtn onClick={() => pathNav('/view')}>view</NavBtn>
+          <NavBtn onClick={() => pathNav('/')}>home</NavBtn>
           <NavBtn>
             <Moon />
           </NavBtn>

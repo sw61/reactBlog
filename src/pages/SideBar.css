@@ -10,3 +10,13 @@
   font-size: 14px;
   padding-left: 30px;
 }
+.active {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+.notActive {
+  color: #909194;
+
+  text-decoration: none;
+}

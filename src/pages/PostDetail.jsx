@@ -1,10 +1,11 @@
 // 라이브러리 및 firebase 연동
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 // 컴포넌트
-import { useParams } from 'react-router-dom';
+import './MarkdownStyle.css';
 import NavBar from './NavBar';
 import SideBar from './SideBar';
 import Footer from './Footer';
@@ -13,18 +14,20 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 // Markdown style
 import { MdxComponents } from '../components/mdx';
+import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 import { getPostById } from '../remote/getPostById';
+import { updatePost } from '../remote/updatePost';
 
 function PostDetail() {
   const { id } = useParams(); // URL에서 id 값 가져오기
-  const [documents, setDocuments] = useState([]);
-  const [headings, setHeadings] = useState([]);
+  const [documents, setDocuments] = useState([]); // Firebase 필드 내용들 저장
+  const [headings, setHeadings] = useState([]); // documents에서 제목만 추출 후 저장
 
   useEffect(() => {
     async function fetchPost() {
       const fetchedPost = await getPostById(id); // Firebase에서 데이터 가져오기
-      setDocuments([fetchedPost]);
+      setDocuments([fetchedPost]); // 배열로 처리 해줌
     }
     fetchPost();
   }, [id]);
@@ -55,6 +58,7 @@ function PostDetail() {
       setHeadings(allHeadings);
     }
   }, [documents]);
+  console.log(headings);
 
   // 1. firebase에서 글 상세 내용 가져오기
   // 2. string로 들어오는거 html로 변환
@@ -74,7 +78,8 @@ function PostDetail() {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={MdxComponents}
-                rehypePlugins={[rehypeSlug]}
+                rehypePlugins={[rehypeRaw, rehypeSlug]}
+                className={'markdown'}
               >
                 {doc.content}
               </ReactMarkdown>
@@ -94,7 +99,6 @@ const ViewerContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   max-width: 800px;
-  margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
 `;

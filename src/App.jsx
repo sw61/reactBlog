@@ -1,11 +1,10 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Editor from './pages/Editor';
 import Viewer from './pages/Viewer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import TestView from './pages/TestView';
-import PostDetail from './pages/TestView';
+import PostDetail from './pages/PostDetail';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
           <Route path="/edit" element={<Editor />} />
           <Route path="/view" element={<Viewer />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>

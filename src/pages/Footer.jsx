@@ -14,7 +14,7 @@ export default Footer;
 
 const FootContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 20px;
   padding: 30px;
 `;

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { Save } from 'lucide-react';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../fireBase';
-
 import NavBar from './NavBar';
 import Footer from './Footer';
+
 function Editor() {
   const [value, setValue] = useState('');
   const [title, setTitle] = useState('');
@@ -56,19 +56,19 @@ function Editor() {
         <TitleInput
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
           placeholder="제목을 입력하세요"
         />
         <ImgUrlInput
           type="text"
           value={imgUrl}
-          onChange={(e) => setImgUrl(e.target.value)}
+          onChange={(event) => setImgUrl(event.target.value)}
           placeholder="IMG 링크를 입력하세요"
         />
         <CommentInput
           type="text"
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={(event) => setComment(event.target.value)}
           placeholder="Comment 내용을 입력하세요"
         />
         <div data-color-mode="light">

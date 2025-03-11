@@ -13,7 +13,7 @@ import remarkParse from 'remark-parse';
 // Markdown style
 import { MdxComponents } from '../components/mdx';
 import rehypeSlug from 'rehype-slug';
-import { getAllPosts } from '../remote/post';
+import { getAllPosts } from '../remote/getAllPosts';
 
 function Viewer() {
   const [documents, setDocuments] = useState([]);
